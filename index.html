@@ -214,6 +214,8 @@
   }
   .cta-btn {
     display: inline-block;
+    position: relative;
+    overflow: hidden;
     padding: 28px 76px;
     background: var(--ink);
     color: var(--paper) !important;
@@ -226,6 +228,31 @@
     outline-offset: 6px;
     box-shadow: 0 12px 32px rgba(26, 26, 26, 0.22);
     transition: background 0.55s ease, color 0.55s ease, outline-color 0.55s ease, letter-spacing 0.55s ease, box-shadow 0.55s ease, transform 0.4s ease;
+    animation: ctaBreath 3.4s ease-in-out infinite;
+  }
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 70%; height: 100%;
+    background: linear-gradient(110deg, transparent 0%, rgba(196, 173, 122, 0.12) 35%, rgba(255, 240, 200, 0.45) 50%, rgba(196, 173, 122, 0.12) 65%, transparent 100%);
+    transform: skewX(-22deg);
+    animation: ctaShimmer 4.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .cta-btn > * { position: relative; z-index: 1; }
+  @keyframes ctaShimmer {
+    0%   { left: -120%; }
+    55%  { left: 130%; }
+    100% { left: 130%; }
+  }
+  @keyframes ctaBreath {
+    0%, 100% {
+      box-shadow: 0 12px 32px rgba(26, 26, 26, 0.22), 0 0 0 0 rgba(156, 134, 87, 0.0);
+    }
+    50% {
+      box-shadow: 0 14px 36px rgba(26, 26, 26, 0.28), 0 0 0 12px rgba(156, 134, 87, 0.08);
+    }
   }
   .cta-btn:hover {
     background: var(--gold);
@@ -235,13 +262,25 @@
     letter-spacing: 0.42em;
     box-shadow: 0 16px 40px rgba(156, 134, 87, 0.42);
     transform: translateY(-2px);
+    animation: none;
   }
+  .cta-btn:hover::before { animation: none; opacity: 0; }
   .cta-btn .arrow {
     display: inline-block;
     margin-left: 18px;
     transition: transform 0.5s;
+    animation: arrowNudge 2.6s ease-in-out infinite;
   }
-  .cta-btn:hover .arrow { transform: translateX(10px); }
+  .cta-btn:hover .arrow { transform: translateX(10px); animation: none; }
+  @keyframes arrowNudge {
+    0%, 70%, 100% { transform: translateX(0); }
+    35%           { transform: translateX(6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-btn,
+    .cta-btn::before,
+    .cta-btn .arrow { animation: none; }
+  }
   .cta-note {
     margin-top: 36px;
     font-size: 13px;
@@ -530,6 +569,109 @@
     max-width: 520px;
   }
 
+  /* ===== LINE Notice ===== */
+  .line-notice {
+    margin: 96px auto 80px;
+    max-width: 620px;
+    padding: 40px 40px 36px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--paper-deep) 100%);
+    border: 1px solid var(--rule);
+    border-left: 4px solid #06C755;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 8px 28px rgba(58, 28, 74, 0.06);
+  }
+  .line-notice::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 24px 24px 0;
+    border-color: transparent #06C755 transparent transparent;
+    opacity: 0.85;
+  }
+  .line-notice .label {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: #06C755;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  .line-notice .heading {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    margin: 0 0 16px;
+    line-height: 1.6;
+  }
+  .line-notice p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 2.05;
+    letter-spacing: 0.04em;
+    margin: 0 0 8px;
+  }
+  .line-notice p strong {
+    color: var(--ink);
+    font-weight: 500;
+    border-bottom: 1px solid #06C755;
+    padding-bottom: 1px;
+  }
+  .line-notice .must {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 14px;
+    background: rgba(6, 199, 85, 0.08);
+    border-left: 3px solid #06C755;
+    font-size: 13.5px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    line-height: 1.85;
+  }
+  .line-notice-action {
+    margin-top: 22px;
+    text-align: center;
+  }
+  .line-notice .line-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #06C755;
+    color: #ffffff !important;
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 15px;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(6, 199, 85, 0.28);
+    transition: transform 0.35s, box-shadow 0.35s, background 0.35s;
+    position: relative;
+  }
+  .line-notice .line-btn:hover {
+    transform: translateY(-2px);
+    background: #05a648;
+    box-shadow: 0 10px 26px rgba(6, 199, 85, 0.4);
+    color: #ffffff !important;
+  }
+  .line-notice .line-btn .arrow {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.35s;
+  }
+  .line-notice .line-btn:hover .arrow { transform: translateX(5px); }
+  @media (max-width: 600px) {
+    .line-notice { padding: 28px 22px 26px; margin: 72px auto 64px; }
+    .line-notice .heading { font-size: 16px; letter-spacing: 0.08em; }
+    .line-notice p { font-size: 13.5px; }
+    .line-notice .line-btn { padding: 14px 28px; font-size: 13.5px; letter-spacing: 0.16em; }
+  }
+
   /* ===== Resources ===== */
   .resources {
     text-align: center;
@@ -691,7 +833,7 @@
     <h2 class="section-title">毎回満席の人気企画<br>デザイナーによるデモンストレーション</h2>
 
     <p class="lead">
-      asca社のデザイナーが、新作コレクションを用いたアレンジメントの<strong>制作プロセス</strong>を披露する、二日間限りの特別プログラムです。
+      asca社のデザイナーが、新作コレクションを用いたアレンジメントの<strong>制作プロセス</strong>を披露します。
     </p>
 
     <div class="featured-times">
@@ -767,10 +909,28 @@
     </div>
 
     <p class="small-note">
-      展示会用の弊社契約駐車場のご案内はございません。<br>
+      展示会用の契約駐車場のご案内はございません。<br>
       公共交通機関でのご来場をお願いいたします。
     </p>
   </section>
+
+  <!-- LINE Notice (重要な注意書き) -->
+  <aside class="line-notice reveal">
+    <div class="label">Important</div>
+    <h3 class="heading">ご注文・お問い合わせは<br>神戸リボン LINE 公式アカウントへ</h3>
+    <p>
+      ご注文に関するご相談・お問い合わせは、<strong>神戸リボン LINE 公式アカウントにて承っております</strong>。
+      スムーズなご対応のため、<strong>ご来場前に必ずお友だち追加</strong>をお願いいたします。
+    </p>
+    <div class="must">
+      ※ 展示会のご予約はページ上部の「ご予約フォームへ進む」ボタンからお手続きください。LINE では予約を承っておりません。
+    </div>
+    <div class="line-notice-action">
+      <a class="line-btn" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">
+        LINE 公式アカウントを友だち追加<span class="arrow">→</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- Closing CTA -->
   <section class="cta-wrap reveal">
@@ -787,12 +947,10 @@
 
   <!-- Resources -->
   <section class="resources reveal">
-    <a class="resource-link" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">LINE 公式アカウント</a>
     <a class="resource-link" href="asca-fair-2026aw.pdf" target="_blank" rel="noopener">案内状（PDF）</a>
 
     <p class="about-asca">
-      asca — 1971年創業。アーティフィシャルフラワー業界のパイオニアとして、高品質な製品を提供し続けるブランドです。<br>
-      ご注文・お問い合わせは、神戸リボン LINE 公式アカウントにて承ります。
+      asca — 1971年創業。アーティフィシャルフラワー業界のパイオニアとして、高品質な製品を提供し続けるブランドです。
     </p>
   </section>
 

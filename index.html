@@ -289,6 +289,60 @@
     line-height: 2;
   }
   .cta-note strong { color: var(--gold); font-weight: 500; }
+
+  /* ===== CTA 必須注記（強調ボックス） ===== */
+  .cta-must {
+    display: inline-block;
+    margin: 36px auto 0;
+    padding: 18px 24px;
+    max-width: 600px;
+    background: linear-gradient(180deg, rgba(156,134,87,0.07), rgba(156,134,87,0.04));
+    border: 1px solid var(--gold-soft);
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(58,28,74,0.06);
+  }
+  .must-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.95;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .must-row + .must-row {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dotted rgba(156,134,87,0.5);
+  }
+  .must-label {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 11.5px;
+    letter-spacing: 0.28em;
+    font-weight: 500;
+    margin-top: 3px;
+    text-align: center;
+    min-width: 60px;
+  }
+  .must-text { flex: 1; }
+  .must-text strong {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 1.04em;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 600px) {
+    .cta-must { padding: 14px 16px; }
+    .must-row { gap: 10px; font-size: 13px; }
+    .must-label { font-size: 10.5px; letter-spacing: 0.22em; min-width: 50px; padding: 3px 8px; }
+  }
   @media (max-width: 600px) {
     .cta-wrap { padding: 48px 18px; margin: 64px 0; }
     .cta-heading { font-size: 19px; letter-spacing: 0.16em; margin-bottom: 24px; }
@@ -855,10 +909,16 @@
     <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
       ご予約フォームへ進む<span class="arrow">→</span>
     </a>
-    <p class="cta-note">
-      ご予約フォームの「お取引先名（ご帳合先名）」欄に必ず<strong>「神戸リボン」</strong>とご記入ください。<br>
-      Web 予約締切日 — 2026 年 6 月 11 日（木）
-    </p>
+    <div class="cta-must">
+      <div class="must-row">
+        <span class="must-label">必須</span>
+        <span class="must-text">予約フォームの「お取引先名（ご帳合先名）」欄に <strong>「神戸リボン」</strong> とご記入ください。</span>
+      </div>
+      <div class="must-row">
+        <span class="must-label">締切</span>
+        <span class="must-text">Web 予約締切日 — <strong>2026 年 6 月 11 日（木）</strong></span>
+      </div>
+    </div>
   </section>
 
   <!-- Schedule -->
@@ -1009,10 +1069,16 @@
     <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
       ご予約フォームへ進む<span class="arrow">→</span>
     </a>
-    <p class="cta-note">
-      Web 予約締切日 — <strong>2026 年 6 月 11 日（木）</strong><br>
-      予約フォームの「お取引先名（ご帳合先名）」欄に「神戸リボン」とご記入ください。
-    </p>
+    <div class="cta-must">
+      <div class="must-row">
+        <span class="must-label">必須</span>
+        <span class="must-text">予約フォームの「お取引先名（ご帳合先名）」欄に <strong>「神戸リボン」</strong> とご記入ください。</span>
+      </div>
+      <div class="must-row">
+        <span class="must-label">締切</span>
+        <span class="must-text">Web 予約締切日 — <strong>2026 年 6 月 11 日（木）</strong></span>
+      </div>
+    </div>
   </section>
 
   <!-- Resources -->

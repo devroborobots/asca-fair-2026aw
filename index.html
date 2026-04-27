@@ -9,7 +9,9 @@
     --primary: #c8161d;
     --primary-dark: #8a0e13;
     --accent: #c4a35a;
+    --accent-light: #e0c47e;
     --ink: #2a1f33;
+    --ink-light: #5a4868;
     --bg: #fefcf9;
   }
   * { box-sizing: border-box; }
@@ -23,7 +25,6 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
-  /* 麻の葉風 薄い背景 */
   body::before {
     content: '';
     position: fixed;
@@ -43,11 +44,9 @@
     overflow: hidden;
     border-radius: 14px;
     box-shadow: 0 12px 40px rgba(58, 28, 74, 0.18);
-    margin-bottom: 2.4em;
+    margin: 0 auto 2.4em;
     aspect-ratio: 1 / 1;
     max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .hero img {
     width: 100%; height: 100%; object-fit: cover; display: block;
@@ -62,68 +61,6 @@
     position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.18));
     pointer-events: none;
-  }
-
-  /* ===== カウントダウン ===== */
-  .countdown-wrap {
-    margin: 2em auto 2.6em;
-    text-align: center;
-  }
-  .countdown-label {
-    display: inline-block;
-    padding: 6px 18px;
-    background: linear-gradient(135deg, #3a1c4a, #5b2c70);
-    color: #fff;
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    border-radius: 50px;
-    margin-bottom: 14px;
-    box-shadow: 0 4px 14px rgba(58, 28, 74, 0.25);
-  }
-  .countdown {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .cd-block {
-    background: linear-gradient(180deg, #2a1f33, #3a1c4a);
-    color: #fff;
-    padding: 14px 6px 10px;
-    border-radius: 10px;
-    min-width: 78px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    position: relative;
-    overflow: hidden;
-  }
-  .cd-block::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    height: 1px;
-    background: rgba(255,255,255,0.12);
-  }
-  .cd-num {
-    font-size: 34px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(.5,1.7,.4,1);
-  }
-  .cd-num.flip { transform: scale(1.18); color: var(--accent); }
-  .cd-label {
-    font-size: 10.5px;
-    opacity: 0.65;
-    letter-spacing: 0.2em;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-  .countdown-msg {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #5a4868;
   }
 
   /* ===== セクションフェードイン ===== */
@@ -156,116 +93,194 @@
   ul { line-height: 2.0; margin-bottom: 1.6em; font-size: 16px; padding-left: 1.4em; }
   ul li { margin-bottom: 0.6em; }
 
-  /* ===== テーマタグ（チップ） ===== */
-  .tag-row { text-align: center; margin: 1.4em 0 2em; }
-  .theme-tag {
-    display: inline-block;
-    padding: 7px 18px;
-    border-radius: 50px;
-    background: #fff;
-    color: var(--primary);
-    border: 1.5px solid var(--primary);
-    font-size: 14px;
-    margin: 5px;
-    font-weight: 600;
-    transition: transform 0.35s, background 0.35s, color 0.35s, box-shadow 0.35s;
-    cursor: default;
-    animation: floatTag 4s ease-in-out infinite;
-  }
-  .theme-tag:nth-child(2) { animation-delay: 0.5s; }
-  .theme-tag:nth-child(3) { animation-delay: 1.0s; }
-  .theme-tag:nth-child(4) { animation-delay: 1.5s; }
-  .theme-tag:hover {
-    background: var(--primary);
-    color: #fff;
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 6px 18px rgba(200, 22, 29, 0.35);
-  }
-  @keyframes floatTag {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-3px); }
-  }
-
-  /* ===== スケジュールタブ ===== */
-  .schedule-card {
-    background: linear-gradient(135deg, #fff 0%, #faf6ff 100%);
-    border: 1px solid rgba(58, 28, 74, 0.12);
-    border-radius: 14px;
-    padding: 24px;
+  /* ===== スケジュール 2列カード ===== */
+  .day-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
     margin: 1.5em 0 2em;
-    box-shadow: 0 8px 28px rgba(58, 28, 74, 0.08);
   }
-  .schedule-tabs {
-    display: flex;
-    gap: 8px;
-    border-bottom: 2px solid #eee;
-    margin-bottom: 18px;
+  .day-card {
+    background: linear-gradient(135deg, #fff, #faf6ff);
+    border: 1px solid rgba(58,28,74,0.12);
+    border-radius: 14px;
+    padding: 22px 20px;
+    box-shadow: 0 6px 22px rgba(58,28,74,0.06);
+    transition: transform 0.4s, box-shadow 0.4s;
   }
-  .schedule-tab {
-    flex: 1;
-    padding: 14px 8px;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    font-weight: 600;
-    color: #888;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    transition: color 0.3s, border-color 0.3s;
-    font-family: inherit;
+  .day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(58,28,74,0.14);
   }
-  .schedule-tab.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-  .schedule-pane { display: none; animation: fadeSlide 0.4s ease both; }
-  .schedule-pane.active { display: block; }
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: none; }
-  }
-  .timeline { position: relative; padding-left: 28px; margin: 12px 0 0; list-style: none; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 8px; top: 6px; bottom: 6px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--primary), var(--accent));
-  }
-  .timeline li {
-    position: relative;
-    padding: 6px 0 14px;
-    font-size: 15.5px;
-  }
-  .timeline li::before {
-    content: '';
-    position: absolute;
-    left: -27px; top: 13px;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--primary);
-    box-shadow: 0 0 0 4px rgba(200, 22, 29, 0.18);
-  }
-  .timeline li.demo::before { background: var(--accent); box-shadow: 0 0 0 4px rgba(196, 163, 90, 0.25); }
-  .timeline .time {
+  .day-head {
+    font-size: 22px;
     font-weight: 700;
-    font-size: 14px;
-    color: var(--primary);
-    margin-right: 10px;
+    color: var(--ink);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
     font-variant-numeric: tabular-nums;
   }
-  .timeline li.demo .time { color: var(--accent); }
-  .timeline li.demo .badge {
+  .day-head .dow { font-size: 16px; opacity: 0.6; margin-left: 4px; }
+  .day-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 15.5px;
+    border-bottom: 1px dashed #e6e1ed;
+  }
+  .day-row:last-child { border-bottom: 0; }
+  .day-row .time {
     display: inline-block;
-    background: var(--accent);
+    min-width: 78px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+  }
+  .day-row.demo {
+    background: linear-gradient(90deg, rgba(196,163,90,0.14), transparent);
+    margin: 4px -8px;
+    padding: 10px 8px;
+    border-radius: 6px;
+    border-bottom: 0;
+    font-weight: 600;
+  }
+  .day-row.demo .time { color: #8a6f2e; }
+  .day-row.demo .star { color: var(--accent); margin-left: 6px; }
+  @media (max-width: 600px) {
+    .day-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== デモンストレーション 強調セクション ===== */
+  .demo-spotlight {
+    margin: 3em 0;
+    padding: 40px 28px 34px;
+    background: linear-gradient(135deg, #2a1f33 0%, #3a1c4a 50%, #5b2c70 100%);
+    color: #fff;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(58,28,74,0.35);
+    text-align: center;
+  }
+  .demo-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at 50% 25%, rgba(196,163,90,0.22), transparent 55%);
+    animation: glow 5s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes glow {
+    from { opacity: 0.5; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1.05); }
+  }
+  .demo-spotlight > * { position: relative; z-index: 1; }
+
+  .demo-badge {
+    display: inline-block;
+    padding: 7px 24px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: #2a1f33;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    font-weight: 800;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(196,163,90,0.45);
+  }
+  .demo-badge .star {
+    display: inline-block;
+    animation: starShine 1.6s ease-in-out infinite alternate;
+  }
+  .demo-badge .star:last-of-type { animation-delay: 0.6s; }
+  @keyframes starShine {
+    from { opacity: 0.55; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1.15); }
+  }
+
+  .demo-title {
+    margin: 0 0 16px;
+    padding: 0; border: 0; background: none;
+    font-size: 26px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.55;
+    border-radius: 0;
+  }
+  .demo-title strong { color: var(--accent-light); }
+  .demo-lead {
+    font-size: 15.5px;
+    line-height: 2;
+    margin: 0 auto 24px;
+    max-width: 660px;
+    color: rgba(255,255,255,0.92);
+  }
+  .demo-lead strong { color: var(--accent-light); }
+
+  .demo-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 26px 0 18px;
+    flex-wrap: wrap;
+  }
+  .demo-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(196,163,90,0.45);
+    border-radius: 12px;
+    padding: 22px 32px;
+    min-width: 200px;
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+  }
+  .demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 34px rgba(196,163,90,0.3);
+    border-color: var(--accent);
+  }
+  .demo-day {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent-light);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .demo-day .dow { font-size: 14px; opacity: 0.7; margin-left: 6px; font-weight: 500; }
+  .demo-time {
+    font-size: 17px;
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.95);
+  }
+  .demo-card .seat {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 10px;
+    background: rgba(200,22,29,0.85);
     color: #fff;
     font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 6px;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    border-radius: 50px;
+    letter-spacing: 0.1em;
+    animation: blink 2.4s ease-in-out infinite;
   }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+  }
+
+  .demo-action {
+    margin: 22px auto 0;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.95;
+    text-align: left;
+    max-width: 620px;
+  }
+  .demo-action strong { color: var(--accent-light); }
 
   /* ===== CTAボタン ===== */
   .cta-block { text-align: center; margin: 2.5em 0; }
@@ -339,17 +354,6 @@
   }
   .line-btn:hover { transform: translateY(-2px); }
 
-  /* インフォボックス */
-  .info-box {
-    margin: 1.5em 0;
-    padding: 16px 20px;
-    border-radius: 6px;
-    line-height: 1.9;
-    font-size: 16px;
-  }
-  .info-box.warn { background: #fff8e6; border-left: 6px solid #e6a700; }
-  .info-box.tip  { background: #f3f8ff; border-left: 6px solid #1f6fb2; }
-
   /* ===== 装飾 ===== */
   .deco-line {
     text-align: center;
@@ -361,8 +365,10 @@
 
   /* ===== モーション控えめ ===== */
   @media (prefers-reduced-motion: reduce) {
-    .hero img { animation: none; }
-    .theme-tag { animation: none; }
+    .hero img,
+    .demo-badge .star,
+    .demo-spotlight::before,
+    .demo-card .seat,
     .cta-primary { animation: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
   }
@@ -373,8 +379,10 @@
     h3 { font-size: 19px; padding: 10px 14px; }
     h4 { font-size: 16px; }
     p, ul { font-size: 15px; }
-    .cd-block { min-width: 64px; padding: 12px 4px 8px; }
-    .cd-num { font-size: 28px; }
+    .demo-spotlight { padding: 30px 18px 26px; }
+    .demo-title { font-size: 21px; }
+    .demo-card { min-width: 160px; padding: 18px 22px; }
+    .demo-day { font-size: 26px; }
     .cta-primary { padding: 16px 30px; font-size: 16px; }
   }
 </style>
@@ -387,30 +395,11 @@
     <img src="hero.png" alt="asca FAIR 2026 AW 大阪会場のご案内 2026年6月17日(水)〜18日(木)">
   </div>
 
-  <!-- ===== カウントダウン ===== -->
-  <div class="countdown-wrap reveal" id="cdwrap">
-    <div class="countdown-label">OPENING IN</div>
-    <div class="countdown" aria-live="polite">
-      <div class="cd-block"><div class="cd-num" id="cd-d">--</div><div class="cd-label">Days</div></div>
-      <div class="cd-block"><div class="cd-num" id="cd-h">--</div><div class="cd-label">Hours</div></div>
-      <div class="cd-block"><div class="cd-num" id="cd-m">--</div><div class="cd-label">Min</div></div>
-      <div class="cd-block"><div class="cd-num" id="cd-s">--</div><div class="cd-label">Sec</div></div>
-    </div>
-    <div class="countdown-msg" id="cd-msg">2026年6月17日(水) 10:00 開場</div>
-  </div>
-
   <!-- ===== 導入 ===== -->
   <p class="reveal">
     アーティフィシャルフラワー業界をリードする<strong>asca（アスカ）社</strong>が、待望の<strong>2026年秋冬シーズン</strong>の新作展示会を大阪で開催いたします。<br>
     トレンドを捉えた高品質・高感度な最新作をいち早くご覧いただける、年に一度のチャンスです。
   </p>
-
-  <div class="tag-row reveal" aria-label="今シーズンの主なテーマ">
-    <span class="theme-tag">🎃 Halloween</span>
-    <span class="theme-tag">🎄 Christmas</span>
-    <span class="theme-tag">🎍 New Year</span>
-    <span class="theme-tag">✨ New Collection</span>
-  </div>
 
   <p class="reveal">
     本展示会は<strong>【完全予約制】</strong>です。<br>
@@ -441,37 +430,48 @@
     <li><strong>来場特典</strong>：展示会期間中のご注文は、<strong>バラ単位および※印商品も通常の掛率</strong>にて承ります</li>
   </ul>
 
-  <!-- ===== タブ式タイムライン ===== -->
+  <!-- ===== スケジュール 2列カード ===== -->
   <h3 class="reveal">当日のスケジュール</h3>
-  <div class="schedule-card reveal">
-    <div class="schedule-tabs" role="tablist">
-      <button class="schedule-tab active" data-target="day1" role="tab" aria-selected="true">6/17 (水)</button>
-      <button class="schedule-tab" data-target="day2" role="tab" aria-selected="false">6/18 (木)</button>
+  <div class="day-grid reveal">
+    <div class="day-card">
+      <div class="day-head">2026.6.17 <span class="dow">(水)</span></div>
+      <div class="day-row"><span class="time">10:00</span>開場</div>
+      <div class="day-row demo"><span class="time">14:00〜</span>デモンストレーション<span class="star">★</span></div>
+      <div class="day-row"><span class="time">18:00</span>閉場</div>
     </div>
-    <div class="schedule-pane active" id="day1" role="tabpanel">
-      <ul class="timeline">
-        <li><span class="time">10:00</span>開場</li>
-        <li class="demo"><span class="time">14:00〜</span>asca社デザイナーによるデモンストレーション<span class="badge">DEMO</span></li>
-        <li><span class="time">18:00</span>閉場</li>
-      </ul>
+    <div class="day-card">
+      <div class="day-head">2026.6.18 <span class="dow">(木)</span></div>
+      <div class="day-row"><span class="time">10:00</span>開場</div>
+      <div class="day-row demo"><span class="time">11:00〜</span>デモンストレーション<span class="star">★</span></div>
+      <div class="day-row"><span class="time">15:00</span>閉場</div>
     </div>
-    <div class="schedule-pane" id="day2" role="tabpanel">
-      <ul class="timeline">
-        <li><span class="time">10:00</span>開場</li>
-        <li class="demo"><span class="time">11:00〜</span>asca社デザイナーによるデモンストレーション<span class="badge">DEMO</span></li>
-        <li><span class="time">15:00</span>閉場</li>
-      </ul>
-    </div>
-    <p style="margin:14px 0 0; font-size:14px; color:#5a4868;">
-      ※デモ観覧をご希望の方は、ご予約フォーム内の「デモンストレーション観覧希望」項目で<strong>ご希望の回</strong>にチェックを入れてください。
-    </p>
   </div>
 
-  <!-- ===== ② 申し込みボタン（中盤） ===== -->
-  <div class="cta-block reveal">
-    <a class="cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
-      予約フォームに進む
-    </a>
+  <!-- ===== ★ デモンストレーション 強調 ===== -->
+  <div class="demo-spotlight reveal">
+    <div class="demo-badge">
+      <span class="star">★</span>&nbsp; FULLY BOOKED EVERY YEAR &nbsp;<span class="star">★</span>
+    </div>
+    <h3 class="demo-title">毎回満席の人気企画<br><strong>asca社デザイナーによるデモンストレーション</strong></h3>
+    <p class="demo-lead">
+      asca社のトップデザイナーが、最新コレクションを使った<strong>プロの技</strong>を目の前で披露。
+      ハロウィン・クリスマス・お正月など、来シーズンの売り場づくりに直結するアレンジメントの<strong>制作プロセス</strong>と<strong>素材使い</strong>がそのまま見られる、毎年お申し込みが集中する人気企画です。
+    </p>
+    <div class="demo-cards">
+      <div class="demo-card">
+        <div class="demo-day">6.17 <span class="dow">(水)</span></div>
+        <div class="demo-time">14:00〜</div>
+        <div class="seat">SEATS LIMITED</div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-day">6.18 <span class="dow">(木)</span></div>
+        <div class="demo-time">11:00〜</div>
+        <div class="seat">SEATS LIMITED</div>
+      </div>
+    </div>
+    <div class="demo-action">
+      <strong>例年早い段階で満席</strong>となる人気枠です。観覧をご希望の方は、<strong>お早めの予約</strong>と、予約フォーム内の<strong>「デモンストレーション観覧希望」</strong>項目で<strong>ご希望の回</strong>に必ずチェックを入れてください。
+    </div>
   </div>
 
   <!-- ===== お問い合わせ LINE ===== -->
@@ -480,7 +480,7 @@
       <p style="margin:0 0 0.8em; font-size:16px;">
         <strong>📱 ご注文・お問い合わせは、神戸リボン LINE公式アカウントへ</strong><br>
         ご注文に関するご相談や各種お問い合わせは、<strong>LINE公式アカウントにて受付</strong>しております。スムーズなご対応のため、<strong>ご来場前に必ずお友だち追加</strong>をお願いいたします。<br>
-        <small style="color:var(--primary);">※展示会のご予約は上記の赤いボタンよりお手続きください。LINEでは予約を承っておりません。</small>
+        <small style="color:var(--primary);">※展示会のご予約は赤いボタンよりお手続きください。LINEでは予約を承っておりません。</small>
       </p>
       <div style="text-align:center; margin-top:0.8em;">
         <a class="line-btn" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">LINE公式アカウントを友だち追加</a>
@@ -502,7 +502,7 @@
     <li>デモンストレーション観覧をご希望の場合は、フォーム内の該当項目で「希望する」を選択し、<strong>ご希望の回</strong>にチェックを入れてください。</li>
   </ul>
 
-  <p class="reveal" style="font-size:14px; color:#5a4868; margin-top:0.6em;">
+  <p class="reveal" style="font-size:14px; color:var(--ink-light); margin-top:0.6em;">
     ※FAXでのご予約をご希望の方は、<a href="asca-fair-2026aw.pdf" target="_blank" rel="noopener">案内状（PDF）</a>裏面の「ご来場確認書」をFAX：052-772-7707（アスカ商会）までお送りください。
   </p>
 
@@ -554,53 +554,6 @@
 </div>
 
 <script>
-// ===== カウントダウン =====
-(function() {
-  var target = new Date('2026-06-17T10:00:00+09:00').getTime();
-  var endOfFair = new Date('2026-06-18T15:00:00+09:00').getTime();
-  var elD = document.getElementById('cd-d');
-  var elH = document.getElementById('cd-h');
-  var elM = document.getElementById('cd-m');
-  var elS = document.getElementById('cd-s');
-  var elMsg = document.getElementById('cd-msg');
-  var prev = { d: null, h: null, m: null, s: null };
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-  function setNum(el, val, key) {
-    if (prev[key] !== val) {
-      el.textContent = val;
-      el.classList.add('flip');
-      setTimeout(function() { el.classList.remove('flip'); }, 320);
-      prev[key] = val;
-    }
-  }
-  function tick() {
-    var now = Date.now();
-    var diff = target - now;
-    if (now >= endOfFair) {
-      elMsg.textContent = '展示会は終了いたしました。ご来場ありがとうございました。';
-      [elD,elH,elM,elS].forEach(function(e){ e.textContent = '00'; });
-      return false;
-    }
-    if (diff <= 0) {
-      elMsg.textContent = '🎉 ただいま開催中です！皆様のご来場をお待ちしております。';
-      [elD,elH,elM,elS].forEach(function(e){ e.textContent = '00'; });
-      return true;
-    }
-    var d = Math.floor(diff / 86400000);
-    var h = Math.floor((diff % 86400000) / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var s = Math.floor((diff % 60000) / 1000);
-    setNum(elD, pad(d), 'd');
-    setNum(elH, pad(h), 'h');
-    setNum(elM, pad(m), 'm');
-    setNum(elS, pad(s), 's');
-    return true;
-  }
-  tick();
-  var iv = setInterval(function() { if (!tick()) clearInterval(iv); }, 1000);
-})();
-
 // ===== スクロール連動フェードイン =====
 (function() {
   if (!('IntersectionObserver' in window)) {
@@ -618,20 +571,6 @@
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 })();
 
-// ===== タブ切替 =====
-(function() {
-  var tabs = document.querySelectorAll('.schedule-tab');
-  tabs.forEach(function(t) {
-    t.addEventListener('click', function() {
-      tabs.forEach(function(x) { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
-      document.querySelectorAll('.schedule-pane').forEach(function(x) { x.classList.remove('active'); });
-      t.classList.add('active');
-      t.setAttribute('aria-selected', 'true');
-      document.getElementById(t.dataset.target).classList.add('active');
-    });
-  });
-})();
-
 // ===== 親ページ（Weebly）に高さ通知 =====
 (function() {
   function postHeight() {
@@ -644,7 +583,6 @@
   window.addEventListener('resize', postHeight);
   setTimeout(postHeight, 500);
   setTimeout(postHeight, 1500);
-  setTimeout(postHeight, 3000);
 })();
 </script>
 </body>

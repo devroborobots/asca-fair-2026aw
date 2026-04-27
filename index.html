@@ -3,864 +3,795 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>asca FAIR 2026 AW 大阪会場 予約受付のお知らせ - 神戸リボン</title>
+<title>asca FAIR 2026 AW · 大阪 — 神戸リボン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #c8161d;
-    --primary-dark: #8a0e13;
-    --accent: #c4a35a;
-    --accent-light: #e0c47e;
-    --ink: #2a1f33;
-    --ink-light: #5a4868;
-    --bg: #fefcf9;
+    --paper: #faf7f1;
+    --paper-deep: #f3eee5;
+    --ink: #1a1a1a;
+    --ink-soft: #4d4640;
+    --ink-mute: #8c8079;
+    --gold: #9c8657;
+    --gold-soft: #c4ad7a;
+    --rule: #d8d1c2;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    padding: 16px;
-    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    font-family: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
     color: var(--ink);
-    background: var(--bg);
+    background: var(--paper);
+    line-height: 1.95;
+    font-weight: 300;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
     word-break: break-word;
-    line-height: 1.7;
     overflow-x: hidden;
   }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='138' viewBox='0 0 80 138'><g fill='none' stroke='%233a1c4a' stroke-width='0.6'><path d='M0 0 L40 23 L40 69 L0 46 Z M40 23 L80 0 L80 46 L40 69 Z M0 46 L40 69 L40 115 L0 92 Z M40 69 L80 46 L80 92 L40 115 Z M0 0 L40 23 M40 23 L80 0 M0 46 L40 69 M40 69 L80 46 M0 92 L40 115 M40 115 L80 92'/></g></svg>");
-    background-size: 80px 138px;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: -1;
+  .serif {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif;
   }
-  .container { max-width: 880px; margin: 0 auto; }
-  a { color: #0a58ca; }
+  .display {
+    font-family: 'Cormorant Garamond', 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+  }
+  a { color: var(--ink); text-decoration: none; transition: color 0.3s; }
+  a:hover { color: var(--gold); }
+  hr { border: 0; }
 
-  /* ===== ヒーロー ===== */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(58, 28, 74, 0.18);
-    margin: 0 auto 2.4em;
-    aspect-ratio: 1 / 1;
+  .container {
     max-width: 720px;
-  }
-  .hero img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    animation: kenburns 18s ease-in-out infinite alternate;
-  }
-  @keyframes kenburns {
-    0%   { transform: scale(1.0) translate(0, 0); }
-    100% { transform: scale(1.07) translate(-1.5%, -1%); }
-  }
-  .hero::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.18));
-    pointer-events: none;
+    margin: 0 auto;
+    padding: 88px 32px 64px;
   }
 
-  /* ===== セクションフェードイン ===== */
+  /* ===== Brand mark ===== */
+  .brand {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .brand-mark em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .brand-series {
+    margin-top: 18px;
+    font-size: 10.5px;
+    letter-spacing: 0.5em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* ===== Overture (date / venue) ===== */
+  .overture {
+    text-align: center;
+    margin: 0 auto 96px;
+  }
+  .gold-rule {
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px auto;
+    display: block;
+  }
+  .dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 92px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .dates .sep {
+    color: var(--gold);
+    font-weight: 300;
+    margin: 0 0.18em;
+    font-style: italic;
+  }
+  .month-year {
+    margin-top: 18px;
+    font-size: 11.5px;
+    letter-spacing: 0.55em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .tagline {
+    margin-top: 44px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    letter-spacing: 0.18em;
+    line-height: 2.1;
+    font-weight: 300;
+  }
+  .venue-tag {
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* ===== Visual ===== */
+  .visual {
+    margin: 0 auto 112px;
+    max-width: 540px;
+  }
+  .visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .visual-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* ===== Section ===== */
+  section.block { margin: 112px 0; }
+  .section-label {
+    font-size: 10.5px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+    font-weight: 400;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 0 0 48px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .lead {
+    font-size: 14.5px;
+    line-height: 2.2;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+  }
+  .lead strong { color: var(--ink); font-weight: 500; }
+
+  /* ===== CTA ===== */
+  .cta-wrap { text-align: center; margin: 80px 0; }
+  .cta-btn {
+    display: inline-block;
+    padding: 22px 56px;
+    border: 1px solid var(--ink);
+    color: var(--ink) !important;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: background 0.5s ease, color 0.5s ease, letter-spacing 0.5s ease;
+  }
+  .cta-btn:hover {
+    background: var(--ink);
+    color: var(--paper) !important;
+    letter-spacing: 0.4em;
+  }
+  .cta-btn .arrow {
+    display: inline-block;
+    margin-left: 14px;
+    transition: transform 0.5s;
+  }
+  .cta-btn:hover .arrow { transform: translateX(8px); }
+  .cta-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+  .cta-note strong { color: var(--gold); font-weight: 500; }
+
+  /* ===== Schedule ===== */
+  .day-block {
+    max-width: 460px;
+    margin: 0 auto 56px;
+  }
+  .day-block:last-child { margin-bottom: 0; }
+  .day-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+    margin-bottom: 8px;
+  }
+  .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .day-date {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .day-date .dow {
+    color: var(--ink-mute);
+    font-size: 13px;
+    margin-left: 10px;
+  }
+  .day-list { list-style: none; padding: 0; margin: 0; }
+  .day-list li {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    font-size: 14px;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .day-list li:last-child { border-bottom: 0; }
+  .day-list .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    min-width: 84px;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.1em;
+    font-size: 17px;
+  }
+  .day-list .label { color: var(--ink-soft); flex: 1; letter-spacing: 0.04em; }
+  .day-list .featured-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ===== Featured (Demo) ===== */
+  .featured {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 88px 24px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at top, rgba(156,134,87,0.05), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(156,134,87,0.04), transparent 60%);
+  }
+  .featured-times {
+    margin: 40px 0 24px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .featured-time {
+    text-align: center;
+  }
+  .featured-time .date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .featured-time .time {
+    margin-top: 10px;
+    font-size: 11.5px;
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .featured-cap {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+  }
+  .featured-cap::before, .featured-cap::after {
+    content: "—";
+    margin: 0 12px;
+    color: var(--gold);
+    font-style: normal;
+  }
+  .featured-note {
+    margin: 24px auto 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    line-height: 2.1;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== Venue ===== */
+  .venue { text-align: center; }
+  .venue-address {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 15px;
+    line-height: 2.2;
+    margin: 0 auto 48px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+  .map {
+    margin: 0 auto 64px;
+    max-width: 720px;
+    border: 1px solid var(--rule);
+    background: var(--paper-deep);
+  }
+  .map iframe {
+    display: block;
+    width: 100%;
+    height: 360px;
+    border: 0;
+    filter: grayscale(0.25) contrast(0.95);
+  }
+  .access-block {
+    text-align: left;
+    max-width: 520px;
+    margin: 0 auto 48px;
+  }
+  .access-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .station-row {
+    display: flex;
+    align-items: center;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+  }
+  .station-row:first-child { border-top: 1px solid var(--rule); }
+  .station-row.hero {
+    background: linear-gradient(90deg, transparent, rgba(156,134,87,0.07), transparent);
+  }
+  .station-name {
+    flex: 1;
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+  .station-name small {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+  }
+  .station-walk {
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .station-walk .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+  }
+  .station-walk .unit {
+    font-size: 10.5px;
+    margin-left: 6px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .exit-line {
+    margin: 14px 4px 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  .journey-table {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .journey-table tr td, .journey-table tr th {
+    padding: 16px 6px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+  }
+  .journey-table tr:first-child td, .journey-table tr:first-child th {
+    border-top: 1px solid var(--rule);
+  }
+  .journey-table th {
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    width: 27%;
+    font-size: 14px;
+  }
+  .journey-table td.path {
+    color: var(--ink-soft);
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+  .journey-table td.dur {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-align: right;
+    width: 22%;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .small-note {
+    margin: 40px auto 0;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+    line-height: 2.1;
+    text-align: center;
+    max-width: 520px;
+  }
+
+  /* ===== Resources / footer ===== */
+  .resources {
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 64px;
+    margin-top: 96px;
+  }
+  .resource-link {
+    display: inline-block;
+    margin: 0 22px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13.5px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft) !important;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 6px;
+    transition: color 0.4s, border-color 0.4s;
+  }
+  .resource-link:hover {
+    color: var(--gold) !important;
+    border-color: var(--gold);
+  }
+  .about-asca {
+    margin-top: 48px;
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--ink-mute);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.05em;
+    font-family: 'Noto Serif JP', "Hiragino Mincho ProN", serif;
+    font-weight: 300;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* ===== Reveal ===== */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+    transform: translateY(16px);
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.7,.2,1);
   }
   .reveal.show { opacity: 1; transform: none; }
 
-  /* ===== タイポ ===== */
-  h2 { font-size: 26px; margin: 0 0 1em; }
-  h3 {
-    margin: 2.6em 0 1.2em;
-    padding: 12px 18px;
-    background: linear-gradient(90deg, #fff5f5 0%, #fff 100%);
-    border-left: 6px solid var(--primary);
-    font-size: 22px;
-    color: var(--ink);
-    border-radius: 0 6px 6px 0;
-  }
-  h4 {
-    margin: 2em 0 1em;
-    padding-left: 14px;
-    border-left: 4px solid var(--primary);
-    font-size: 18px;
-    color: var(--ink);
-  }
-  p { line-height: 2.0; margin-bottom: 1.6em; font-size: 16px; }
-  ul { line-height: 2.0; margin-bottom: 1.6em; font-size: 16px; padding-left: 1.4em; }
-  ul li { margin-bottom: 0.6em; }
-
-  /* ===== スケジュール 2列カード ===== */
-  .day-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 1.5em 0 2em;
-  }
-  .day-card {
-    background: linear-gradient(135deg, #fff, #faf6ff);
-    border: 1px solid rgba(58,28,74,0.12);
-    border-radius: 14px;
-    padding: 22px 20px;
-    box-shadow: 0 6px 22px rgba(58,28,74,0.06);
-    transition: transform 0.4s, box-shadow 0.4s;
-  }
-  .day-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(58,28,74,0.14);
-  }
-  .day-head {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--ink);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 10px;
-    margin-bottom: 14px;
-    font-variant-numeric: tabular-nums;
-  }
-  .day-head .dow { font-size: 16px; opacity: 0.6; margin-left: 4px; }
-  .day-row {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    font-size: 15.5px;
-    border-bottom: 1px dashed #e6e1ed;
-  }
-  .day-row:last-child { border-bottom: 0; }
-  .day-row .time {
-    display: inline-block;
-    min-width: 78px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: var(--primary);
-  }
-  .day-row.demo {
-    background: linear-gradient(90deg, rgba(196,163,90,0.14), transparent);
-    margin: 4px -8px;
-    padding: 10px 8px;
-    border-radius: 6px;
-    border-bottom: 0;
-    font-weight: 600;
-  }
-  .day-row.demo .time { color: #8a6f2e; }
-  .day-row.demo .star { color: var(--accent); margin-left: 6px; }
-  @media (max-width: 600px) {
-    .day-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== デモンストレーション 強調セクション ===== */
-  .demo-spotlight {
-    margin: 3em 0;
-    padding: 40px 28px 34px;
-    background: linear-gradient(135deg, #2a1f33 0%, #3a1c4a 50%, #5b2c70 100%);
-    color: #fff;
-    border-radius: 18px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(58,28,74,0.35);
-    text-align: center;
-  }
-  .demo-spotlight::before {
-    content: '';
-    position: absolute;
-    inset: -50%;
-    background: radial-gradient(circle at 50% 25%, rgba(196,163,90,0.22), transparent 55%);
-    animation: glow 5s ease-in-out infinite alternate;
-    pointer-events: none;
-  }
-  @keyframes glow {
-    from { opacity: 0.5; transform: scale(0.95); }
-    to   { opacity: 1; transform: scale(1.05); }
-  }
-  .demo-spotlight > * { position: relative; z-index: 1; }
-
-  .demo-badge {
-    display: inline-block;
-    padding: 7px 24px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    color: #2a1f33;
-    font-size: 12px;
-    letter-spacing: 0.28em;
-    font-weight: 800;
-    border-radius: 50px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 18px rgba(196,163,90,0.45);
-  }
-  .demo-badge .star {
-    display: inline-block;
-    animation: starShine 1.6s ease-in-out infinite alternate;
-  }
-  .demo-badge .star:last-of-type { animation-delay: 0.6s; }
-  @keyframes starShine {
-    from { opacity: 0.55; transform: scale(0.9); }
-    to   { opacity: 1; transform: scale(1.15); }
-  }
-
-  .demo-title {
-    margin: 0 0 16px;
-    padding: 0; border: 0; background: none;
-    font-size: 26px;
-    color: #fff;
-    font-weight: 700;
-    line-height: 1.55;
-    border-radius: 0;
-  }
-  .demo-title strong { color: var(--accent-light); }
-  .demo-lead {
-    font-size: 15.5px;
-    line-height: 2;
-    margin: 0 auto 24px;
-    max-width: 660px;
-    color: rgba(255,255,255,0.92);
-  }
-  .demo-lead strong { color: var(--accent-light); }
-
-  .demo-cards {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    margin: 26px 0 18px;
-    flex-wrap: wrap;
-  }
-  .demo-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(196,163,90,0.45);
-    border-radius: 12px;
-    padding: 22px 32px;
-    min-width: 200px;
-    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
-  }
-  .demo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 34px rgba(196,163,90,0.3);
-    border-color: var(--accent);
-  }
-  .demo-day {
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--accent-light);
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
-  }
-  .demo-day .dow { font-size: 14px; opacity: 0.7; margin-left: 6px; font-weight: 500; }
-  .demo-time {
-    font-size: 17px;
-    margin-top: 8px;
-    letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.95);
-  }
-  .demo-card .seat {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 3px 10px;
-    background: rgba(200,22,29,0.85);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 50px;
-    letter-spacing: 0.1em;
-    animation: blink 2.4s ease-in-out infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0.55; }
-  }
-
-  .demo-action {
-    margin: 22px auto 0;
-    padding: 14px 18px;
-    background: rgba(255,255,255,0.06);
-    border-left: 3px solid var(--accent);
-    border-radius: 6px;
-    font-size: 14px;
-    line-height: 1.95;
-    text-align: left;
-    max-width: 620px;
-  }
-  .demo-action strong { color: var(--accent-light); }
-
-  /* ===== CTAボタン ===== */
-  .cta-block { text-align: center; margin: 2.5em 0; }
-  .cta-primary {
-    display: inline-block;
-    padding: 20px 52px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: #ffffff !important;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 60px;
-    box-shadow: 0 6px 22px rgba(200, 22, 29, 0.4);
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: pulseRing 2.6s infinite;
-  }
-  .cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(200, 22, 29, 0.55);
-  }
-  .cta-primary::after {
-    content: ' →';
-    display: inline-block;
-    transition: transform 0.3s;
-  }
-  .cta-primary:hover::after { transform: translateX(6px); }
-  @keyframes pulseRing {
-    0%   { box-shadow: 0 6px 22px rgba(200, 22, 29, 0.4), 0 0 0 0 rgba(200, 22, 29, 0.5); }
-    70%  { box-shadow: 0 6px 22px rgba(200, 22, 29, 0.4), 0 0 0 18px rgba(200, 22, 29, 0); }
-    100% { box-shadow: 0 6px 22px rgba(200, 22, 29, 0.4), 0 0 0 0 rgba(200, 22, 29, 0); }
-  }
-  .reservation-note {
-    display: inline-block;
-    max-width: 600px;
-    margin-bottom: 1.4em;
-    padding: 14px 22px;
-    background: #fff5f5;
-    border: 2px solid var(--primary);
-    border-radius: 8px;
-    text-align: left;
-    line-height: 1.7;
-    font-size: 15px;
-    color: var(--primary);
-  }
-  .reservation-note strong.big { font-size: 17px; }
-
-  /* LINE ボタン */
-  .line-card {
-    display: inline-block;
-    max-width: 600px;
-    margin-top: 1em;
-    padding: 18px 22px;
-    background: #f0fbf4;
-    border: 2px solid #06C755;
-    border-radius: 10px;
-    text-align: left;
-    line-height: 1.7;
-  }
-  .line-btn {
-    display: inline-block;
-    padding: 14px 36px;
-    background: #06C755;
-    color: #ffffff !important;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    transition: transform 0.25s;
-  }
-  .line-btn:hover { transform: translateY(-2px); }
-
-  /* ===== 会場アクセス ===== */
-  .access-map {
-    position: relative;
-    margin: 1.5em 0 1.6em;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(58,28,74,0.15);
-    border: 1px solid rgba(58,28,74,0.08);
-  }
-  .access-map iframe {
-    display: block;
-    width: 100%;
-    height: 380px;
-    border: 0;
-  }
-  .access-map-link {
-    position: absolute;
-    right: 12px; bottom: 12px;
-    background: rgba(255,255,255,0.95);
-    padding: 8px 14px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--ink) !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-    transition: transform 0.25s;
-  }
-  .access-map-link:hover { transform: translateY(-2px); }
-
-  .station-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin: 1.5em 0;
-  }
-  .station-card {
-    display: grid;
-    grid-template-columns: 70px 1fr auto;
-    gap: 16px;
-    align-items: center;
-    background: linear-gradient(135deg, #fff, #faf6ff);
-    border: 1px solid rgba(58,28,74,0.12);
-    border-radius: 14px;
-    padding: 18px 20px;
-    box-shadow: 0 4px 16px rgba(58,28,74,0.06);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .station-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(58,28,74,0.12);
-  }
-  .station-card.primary {
-    background: linear-gradient(135deg, #fff5f5, #fff);
-    border-color: var(--primary);
-  }
-  .station-icon {
-    width: 70px; height: 70px;
-    background: linear-gradient(135deg, #e8e0f0, #f5eef9);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 30px;
-  }
-  .station-card.primary .station-icon {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: #fff;
-  }
-  .station-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .station-line {
-    font-size: 13px;
-    color: var(--ink-light);
-    margin-top: 3px;
-  }
-  .station-walk {
-    text-align: right;
-    line-height: 1;
-  }
-  .station-walk .num {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary);
-    font-variant-numeric: tabular-nums;
-  }
-  .station-walk .unit {
-    font-size: 12px;
-    color: var(--ink-light);
-    margin-left: 2px;
-  }
-  .station-walk .label {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--ink-light);
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-  .exit-info {
-    grid-column: 1 / -1;
-    margin-top: 8px;
-    padding: 10px 14px;
-    background: rgba(200,22,29,0.06);
-    border-radius: 8px;
-    font-size: 13.5px;
-    color: var(--ink);
-    line-height: 1.85;
-  }
-  .exit-info strong { color: var(--primary); }
-
-  .access-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 1em 0 1.5em;
-    font-size: 14.5px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(58,28,74,0.06);
-  }
-  .access-table th, .access-table td {
-    padding: 12px 14px;
-    text-align: left;
-    border-bottom: 1px solid #f0eaf5;
-    vertical-align: middle;
-  }
-  .access-table tr:last-child th, .access-table tr:last-child td { border-bottom: 0; }
-  .access-table th {
-    background: linear-gradient(135deg, #3a1c4a, #5b2c70);
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    font-size: 13.5px;
-  }
-  .access-table td:first-child {
-    font-weight: 700;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  .access-table .dur {
-    color: var(--primary);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-  .access-table tr:hover td { background: rgba(200,22,29,0.03); }
-
-  .access-warn {
-    margin: 1.6em 0;
-    padding: 16px 20px;
-    background: #fff8e6;
-    border-left: 6px solid #e6a700;
-    border-radius: 0 8px 8px 0;
-    font-size: 15px;
-    line-height: 1.95;
-  }
-
-  @media (max-width: 600px) {
-    .station-card { grid-template-columns: 56px 1fr auto; padding: 14px 16px; gap: 12px; }
-    .station-icon { width: 56px; height: 56px; font-size: 24px; }
-    .station-walk .num { font-size: 22px; }
-    .access-table { font-size: 13px; }
-    .access-table th, .access-table td { padding: 10px 8px; }
-    .access-map iframe { height: 320px; }
-  }
-
-  /* ===== 装飾 ===== */
-  .deco-line {
-    text-align: center;
-    margin: 3em 0 2em;
-    color: var(--accent);
-    font-size: 22px;
-    letter-spacing: 1em;
-  }
-
-  /* ===== モーション控えめ ===== */
   @media (prefers-reduced-motion: reduce) {
-    .hero img,
-    .demo-badge .star,
-    .demo-spotlight::before,
-    .demo-card .seat,
-    .cta-primary { animation: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
-  /* ===== レスポンシブ ===== */
+  /* ===== Responsive ===== */
   @media (max-width: 600px) {
-    h2 { font-size: 22px; }
-    h3 { font-size: 19px; padding: 10px 14px; }
-    h4 { font-size: 16px; }
-    p, ul { font-size: 15px; }
-    .demo-spotlight { padding: 30px 18px 26px; }
-    .demo-title { font-size: 21px; }
-    .demo-card { min-width: 160px; padding: 18px 22px; }
-    .demo-day { font-size: 26px; }
-    .cta-primary { padding: 16px 30px; font-size: 16px; }
+    .container { padding: 60px 22px 48px; }
+    .brand-mark { font-size: 26px; letter-spacing: 0.15em; }
+    .dates { font-size: 64px; }
+    .month-year { font-size: 10.5px; letter-spacing: 0.45em; }
+    .tagline { font-size: 14.5px; letter-spacing: 0.12em; }
+    .section-title { font-size: 21px; letter-spacing: 0.06em; }
+    .visual { margin-bottom: 80px; }
+    section.block { margin: 88px 0; }
+    .featured { padding: 64px 16px; }
+    .featured-times { gap: 32px; }
+    .featured-time .date { font-size: 28px; }
+    .featured-cap::before, .featured-cap::after { margin: 0 6px; }
+    .day-list .time { font-size: 15px; min-width: 72px; letter-spacing: 0.06em; }
+    .station-name { font-size: 15.5px; }
+    .station-walk .num { font-size: 22px; }
+    .map iframe { height: 280px; }
+    .journey-table { font-size: 12px; }
+    .journey-table td.path { font-size: 11px; }
+    .journey-table td.dur { font-size: 15px; }
+    .resource-link { display: block; margin: 10px 0; }
+    .cta-btn { padding: 18px 36px; font-size: 14px; letter-spacing: 0.25em; }
   }
 </style>
 </head>
 <body>
+
 <div class="container">
 
-  <!-- ===== ヒーロー ===== -->
-  <div class="hero reveal">
-    <img src="hero.png" alt="asca FAIR 2026 AW 大阪会場のご案内 2026年6月17日(水)〜18日(木)">
-  </div>
+  <!-- Brand -->
+  <header class="brand reveal">
+    <div class="brand-mark">asca <em>FAIR</em></div>
+    <div class="brand-series">2026 Autumn / Winter</div>
+  </header>
 
-  <!-- ===== 導入 ===== -->
-  <p class="reveal">
-    アーティフィシャルフラワー業界をリードする<strong>asca（アスカ）社</strong>が、待望の<strong>2026年秋冬シーズン</strong>の新作展示会を大阪で開催いたします。<br>
-    トレンドを捉えた高品質・高感度な最新作をいち早くご覧いただける、年に一度のチャンスです。
-  </p>
+  <!-- Overture -->
+  <section class="overture reveal">
+    <hr class="gold-rule">
 
-  <p class="reveal">
-    本展示会は<strong>【完全予約制】</strong>です。<br>
-    ご来場を希望される方は、<strong>下のボタン</strong>よりお早めにお申し込みください。
-  </p>
+    <div class="dates">17<span class="sep">—</span>18</div>
+    <div class="month-year">June · 2026</div>
 
-  <!-- ===== ① 申し込みボタン（ファーストCTA） ===== -->
-  <div class="cta-block reveal">
-    <div class="reservation-note">
-      <strong>【ご予約時のお願い】</strong><br>
-      予約フォームの<strong>「お取引先名（ご帳合先名）」</strong>に、必ず<strong class="big">「神戸リボン」</strong>とご記入ください。
-    </div>
-    <div style="margin-top:0.6em;">
-      <a class="cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
-        asca FAIR 2026 AW（大阪）に申し込む
-      </a>
-    </div>
-  </div>
+    <hr class="gold-rule">
 
-  <!-- ===== 開催概要 ===== -->
-  <h3 class="reveal">開催概要（大阪会場）</h3>
-  <ul class="reveal">
-    <li><strong>イベント名</strong>：asca FAIR 2026 AW（2026 AUTUMN WINTER COLLECTION）</li>
-    <li><strong>会場</strong>：大阪産業創造館 3階 マーケットプラザ</li>
-    <li><strong>住所</strong>：〒541-0053 大阪市中央区本町一丁目4番5号（<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E7%94%A3%E6%A5%AD%E5%89%B5%E9%80%A0%E9%A4%A8" target="_blank" rel="noopener">Google MAPで地図を見る</a>）</li>
-    <li><strong>会期</strong>：2026年6月17日(水) 〜 6月18日(木)</li>
-    <li><strong>WEB予約締切日</strong>：2026年6月11日(木)</li>
-    <li><strong>来場特典</strong>：展示会期間中のご注文は、<strong>バラ単位および※印商品も通常の掛率</strong>にて承ります</li>
-  </ul>
+    <p class="tagline serif">来季の物語、はじまる二日間。</p>
+    <p class="venue-tag">Osaka Sangyo Sozokan</p>
+  </section>
 
-  <!-- ===== スケジュール 2列カード ===== -->
-  <h3 class="reveal">当日のスケジュール</h3>
-  <div class="day-grid reveal">
-    <div class="day-card">
-      <div class="day-head">2026.6.17 <span class="dow">(水)</span></div>
-      <div class="day-row"><span class="time">10:00</span>開場</div>
-      <div class="day-row demo"><span class="time">14:00〜</span>デモンストレーション<span class="star">★</span></div>
-      <div class="day-row"><span class="time">18:00</span>閉場</div>
-    </div>
-    <div class="day-card">
-      <div class="day-head">2026.6.18 <span class="dow">(木)</span></div>
-      <div class="day-row"><span class="time">10:00</span>開場</div>
-      <div class="day-row demo"><span class="time">11:00〜</span>デモンストレーション<span class="star">★</span></div>
-      <div class="day-row"><span class="time">15:00</span>閉場</div>
-    </div>
-  </div>
+  <!-- Visual -->
+  <figure class="visual reveal">
+    <img src="hero.png" alt="asca FAIR 2026 AW key visual">
+    <figcaption class="visual-meta">
+      <span>Key Visual</span>
+      <span>2026 A / W Collection</span>
+    </figcaption>
+  </figure>
 
-  <!-- ===== ★ デモンストレーション 強調 ===== -->
-  <div class="demo-spotlight reveal">
-    <div class="demo-badge">
-      <span class="star">★</span>&nbsp; FULLY BOOKED EVERY YEAR &nbsp;<span class="star">★</span>
-    </div>
-    <h3 class="demo-title">毎回満席の人気企画<br><strong>asca社デザイナーによるデモンストレーション</strong></h3>
-    <p class="demo-lead">
-      asca社のトップデザイナーが、最新コレクションを使った<strong>プロの技</strong>を目の前で披露。
-      ハロウィン・クリスマス・お正月など、来シーズンの売り場づくりに直結するアレンジメントの<strong>制作プロセス</strong>と<strong>素材使い</strong>がそのまま見られる、毎年お申し込みが集中する人気企画です。
+  <!-- Lead -->
+  <section class="block reveal">
+    <p class="lead">
+      アーティフィシャルフラワーのパイオニア <strong>asca社</strong> による、年に一度の新作発表会。
+      来季の物語を、二日間限りでご紹介します。
     </p>
-    <div class="demo-cards">
-      <div class="demo-card">
-        <div class="demo-day">6.17 <span class="dow">(水)</span></div>
-        <div class="demo-time">14:00〜</div>
-        <div class="seat">SEATS LIMITED</div>
-      </div>
-      <div class="demo-card">
-        <div class="demo-day">6.18 <span class="dow">(木)</span></div>
-        <div class="demo-time">11:00〜</div>
-        <div class="seat">SEATS LIMITED</div>
-      </div>
-    </div>
-    <div class="demo-action">
-      <strong>例年早い段階で満席</strong>となる人気枠です。観覧をご希望の方は、<strong>お早めの予約</strong>と、予約フォーム内の<strong>「デモンストレーション観覧希望」</strong>項目で<strong>ご希望の回</strong>に必ずチェックを入れてください。
-    </div>
-  </div>
+    <p class="lead" style="margin-top:24px;">
+      本展示会は<strong>完全予約制</strong>です。
+    </p>
+  </section>
 
-  <!-- ===== お問い合わせ LINE ===== -->
-  <div class="cta-block reveal">
-    <div class="line-card">
-      <p style="margin:0 0 0.8em; font-size:16px;">
-        <strong>📱 ご注文・お問い合わせは、神戸リボン LINE公式アカウントへ</strong><br>
-        ご注文に関するご相談や各種お問い合わせは、<strong>LINE公式アカウントにて受付</strong>しております。スムーズなご対応のため、<strong>ご来場前に必ずお友だち追加</strong>をお願いいたします。<br>
-        <small style="color:var(--primary);">※展示会のご予約は赤いボタンよりお手続きください。LINEでは予約を承っておりません。</small>
+  <!-- CTA primary -->
+  <section class="cta-wrap reveal">
+    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
+      Reserve Your Visit <span class="arrow">→</span>
+    </a>
+    <p class="cta-note">
+      ご予約フォームの「お取引先名（ご帳合先名）」欄に必ず<strong>「神戸リボン」</strong>とご記入ください。<br>
+      Web 予約締切日 — 2026 年 6 月 11 日（木）
+    </p>
+  </section>
+
+  <!-- Schedule -->
+  <section class="block reveal">
+    <div class="section-label">Schedule</div>
+    <h2 class="section-title">会期</h2>
+
+    <div class="day-block">
+      <div class="day-head">
+        <span class="day-num">Day 01</span>
+        <span class="day-date">17 June 2026<span class="dow">水</span></span>
+      </div>
+      <ul class="day-list">
+        <li><span class="time">10:00</span><span class="label">開場</span></li>
+        <li><span class="time">14:00</span><span class="label">デモンストレーション</span><span class="featured-mark">Featured</span></li>
+        <li><span class="time">18:00</span><span class="label">閉場</span></li>
+      </ul>
+    </div>
+
+    <div class="day-block">
+      <div class="day-head">
+        <span class="day-num">Day 02</span>
+        <span class="day-date">18 June 2026<span class="dow">木</span></span>
+      </div>
+      <ul class="day-list">
+        <li><span class="time">10:00</span><span class="label">開場</span></li>
+        <li><span class="time">11:00</span><span class="label">デモンストレーション</span><span class="featured-mark">Featured</span></li>
+        <li><span class="time">15:00</span><span class="label">閉場</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Featured Programme -->
+  <section class="featured reveal">
+    <div class="section-label">Featured Programme</div>
+    <h2 class="section-title">デザイナーによる<br>デモンストレーション</h2>
+
+    <p class="lead">
+      asca社のデザイナーが、新作コレクションを用いたアレンジメントの<strong>制作プロセス</strong>を披露する、二日間限りの特別プログラム。
+    </p>
+
+    <div class="featured-times">
+      <div class="featured-time">
+        <div class="date">17 Jun</div>
+        <div class="time">14:00</div>
+      </div>
+      <div class="featured-time">
+        <div class="date">18 Jun</div>
+        <div class="time">11:00</div>
+      </div>
+    </div>
+
+    <div class="featured-cap">Reserved seats fill quickly each year</div>
+
+    <p class="featured-note">
+      毎年早い段階で満席となる人気プログラムです。<br>
+      観覧をご希望の方は、ご予約フォーム内の「デモンストレーション観覧希望」項目で、ご希望の回をお選びください。
+    </p>
+  </section>
+
+  <!-- Venue -->
+  <section class="block venue reveal">
+    <div class="section-label">Venue</div>
+    <h2 class="section-title">大阪産業創造館</h2>
+
+    <p class="venue-address">
+      〒541-0053<br>
+      大阪市中央区本町一丁目4番5号<br>
+      3F マーケットプラザ
+    </p>
+
+    <div class="map">
+      <iframe
+        src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E7%94%A3%E6%A5%AD%E5%89%B5%E9%80%A0%E9%A4%A8&z=16&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="大阪産業創造館の地図"></iframe>
+    </div>
+
+    <div class="access-block">
+      <div class="access-heading">Nearest Station</div>
+      <div class="station-row hero">
+        <span class="station-name">堺筋本町<small>Sakaisuji-Honmachi · Osaka Metro 中央線・堺筋線</small></span>
+        <span class="station-walk"><span class="num">5</span><span class="unit">min</span></span>
+      </div>
+      <p class="exit-line">
+        中央線：1号出口より徒歩約 5 分／堺筋線：12号出口より徒歩約 5 分
       </p>
-      <div style="text-align:center; margin-top:0.8em;">
-        <a class="line-btn" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">LINE公式アカウントを友だち追加</a>
+    </div>
+
+    <div class="access-block">
+      <div class="access-heading">Other Stations</div>
+      <div class="station-row">
+        <span class="station-name">本町<small>Honmachi · 御堂筋線・中央線・四つ橋線</small></span>
+        <span class="station-walk"><span class="num">10</span><span class="unit">min</span></span>
+      </div>
+      <div class="station-row">
+        <span class="station-name">谷町四丁目<small>Tanimachi 4-chome · 中央線・谷町線</small></span>
+        <span class="station-walk"><span class="num">12</span><span class="unit">min</span></span>
       </div>
     </div>
-  </div>
 
-  <div class="deco-line">⁂ ⁂ ⁂</div>
+    <div class="access-block">
+      <div class="access-heading">From Major Stations</div>
+      <table class="journey-table">
+        <tr><th>JR新大阪</th><td class="path">御堂筋線「本町」→ 中央線「堺筋本町」</td><td class="dur">16′</td></tr>
+        <tr><th>JR大阪 / 梅田</th><td class="path">御堂筋線「本町」→ 中央線「堺筋本町」</td><td class="dur">9′</td></tr>
+        <tr><th>難波</th><td class="path">御堂筋線「本町」→ 中央線「堺筋本町」</td><td class="dur">7′</td></tr>
+        <tr><th>天王寺</th><td class="path">御堂筋線「本町」→ 中央線「堺筋本町」</td><td class="dur">11′</td></tr>
+        <tr><th>京都</th><td class="path">JR新快速「新大阪」→ 御堂筋線 → 中央線「堺筋本町」</td><td class="dur">45′</td></tr>
+        <tr><th>三宮</th><td class="path">阪急 / 阪神「大阪梅田」→ 御堂筋線 → 中央線「堺筋本町」</td><td class="dur">45′</td></tr>
+      </table>
+    </div>
 
-  <!-- ===== 詳細 ===== -->
-  <h3 class="reveal">ご予約方法</h3>
-  <p class="reveal">
-    <strong>WEB予約</strong>を推奨しております。下記ボタンよりGoogleフォームへアクセスいただき、必要事項をご入力ください。<br>
-    予約完了後、ご登録のメールアドレスへ確認メールが届きます。
-  </p>
-  <ul class="reveal">
-    <li><strong>WEB予約締切日</strong>：2026年6月11日(木)</li>
-    <li>フォーム内の「お取引先名（ご帳合先名）」には必ず<strong>「神戸リボン」</strong>とご記入ください。</li>
-    <li>デモンストレーション観覧をご希望の場合は、フォーム内の該当項目で「希望する」を選択し、<strong>ご希望の回</strong>にチェックを入れてください。</li>
-  </ul>
+    <p class="small-note">
+      展示会用の弊社契約駐車場のご案内はございません。<br>
+      公共交通機関でのご来場をお願いいたします。
+    </p>
+  </section>
 
-  <p class="reveal" style="font-size:14px; color:var(--ink-light); margin-top:0.6em;">
-    ※FAXでのご予約をご希望の方は、<a href="asca-fair-2026aw.pdf" target="_blank" rel="noopener">案内状（PDF）</a>裏面の「ご来場確認書」をFAX：052-772-7707（アスカ商会）までお送りください。
-  </p>
-
-  <h3 class="reveal">ご来場特典</h3>
-  <p class="reveal">
-    展示会期間中のご注文は、<strong>バラ単位および※印商品に対しましても、通常の掛率</strong>のまま承ります。
-  </p>
-
-  <h3 class="reveal">会場アクセス</h3>
-  <p class="reveal">
-    会場は <strong>Osaka Metro「堺筋本町駅」徒歩約5分</strong>。展示会用の弊社契約駐車場のご用意はございませんので、<strong>電車・地下鉄など公共交通機関でのご来場</strong>をお願いいたします。
-  </p>
-  <ul class="reveal">
-    <li><strong>会場</strong>：大阪産業創造館 3階 マーケットプラザ</li>
-    <li><strong>住所</strong>：〒541-0053 大阪市中央区本町一丁目4番5号</li>
-    <li><strong>TEL</strong>：06-6264-9800（大阪産業創造館 代表）</li>
-  </ul>
-
-  <!-- 地図 -->
-  <div class="access-map reveal">
-    <iframe
-      src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E7%94%A3%E6%A5%AD%E5%89%B5%E9%80%A0%E9%A4%A8&z=16&ie=UTF8&iwloc=&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen
-      title="大阪産業創造館の地図"></iframe>
-    <a class="access-map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E7%94%A3%E6%A5%AD%E5%89%B5%E9%80%A0%E9%A4%A8" target="_blank" rel="noopener">
-      Google Mapsで開く ↗
+  <!-- Closing CTA -->
+  <section class="cta-wrap reveal">
+    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
+      Reserve Your Visit <span class="arrow">→</span>
     </a>
-  </div>
+    <p class="cta-note">
+      Web 予約締切日 — <strong>2026 年 6 月 11 日（木）</strong><br>
+      予約フォームの「お取引先名（ご帳合先名）」欄に「神戸リボン」とご記入ください。
+    </p>
+  </section>
 
-  <h4 class="reveal">最寄り駅</h4>
-  <div class="station-grid reveal">
-    <div class="station-card primary">
-      <div class="station-icon">🚇</div>
-      <div>
-        <div class="station-name">堺筋本町駅</div>
-        <div class="station-line">Osaka Metro 中央線・堺筋線</div>
-      </div>
-      <div class="station-walk">
-        <span class="num">5</span><span class="unit">分</span>
-        <span class="label">Walk</span>
-      </div>
-      <div class="exit-info">
-        <strong>中央線をご利用の方</strong>：<strong>1号出口</strong>より徒歩約5分<br>
-        <strong>堺筋線をご利用の方</strong>：<strong>12号出口</strong>より徒歩約5分
-      </div>
-    </div>
-    <div class="station-card">
-      <div class="station-icon">🚇</div>
-      <div>
-        <div class="station-name">本町駅</div>
-        <div class="station-line">Osaka Metro 御堂筋線・中央線・四つ橋線</div>
-      </div>
-      <div class="station-walk">
-        <span class="num">10</span><span class="unit">分</span>
-        <span class="label">Walk</span>
-      </div>
-    </div>
-    <div class="station-card">
-      <div class="station-icon">🚇</div>
-      <div>
-        <div class="station-name">谷町四丁目駅</div>
-        <div class="station-line">Osaka Metro 中央線・谷町線</div>
-      </div>
-      <div class="station-walk">
-        <span class="num">12</span><span class="unit">分</span>
-        <span class="label">Walk</span>
-      </div>
-    </div>
-  </div>
+  <!-- Resources -->
+  <section class="resources reveal">
+    <a class="resource-link" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">LINE Official</a>
+    <a class="resource-link" href="asca-fair-2026aw.pdf" target="_blank" rel="noopener">Invitation PDF</a>
 
-  <h4 class="reveal">主要駅からのアクセス</h4>
-  <p class="reveal" style="font-size:14px; color:var(--ink-light); margin-bottom:0.6em;">
-    最寄り「堺筋本町駅」までの目安所要時間（電車のみ・乗換時間込み／徒歩除く）です。
-  </p>
-  <div class="reveal" style="overflow-x:auto;">
-    <table class="access-table">
-      <thead>
-        <tr><th>出発駅</th><th>主な経路</th><th>所要時間</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>JR新大阪</td>
-          <td>御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約16分</span></td>
-        </tr>
-        <tr>
-          <td>JR大阪／梅田</td>
-          <td>御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約9分</span></td>
-        </tr>
-        <tr>
-          <td>難波</td>
-          <td>御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約7分</span></td>
-        </tr>
-        <tr>
-          <td>天王寺</td>
-          <td>御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約11分</span></td>
-        </tr>
-        <tr>
-          <td>京都</td>
-          <td>JR京都線（新快速）「新大阪」→ 御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約45分</span></td>
-        </tr>
-        <tr>
-          <td>三宮</td>
-          <td>阪急/阪神「大阪梅田」→ 御堂筋線「本町」→ 中央線「堺筋本町」</td>
-          <td><span class="dur">約45分</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <p class="about-asca">
+      asca — 1971 年創業。アーティフィシャルフラワー業界のパイオニアとして、高品質な製品を提供し続けるブランド。<br>
+      ご注文・お問い合わせは神戸リボン LINE 公式アカウントにて承ります。
+    </p>
+  </section>
 
-  <div class="access-warn reveal">
-    <strong>🚗 お車でのご来場について</strong><br>
-    展示会用の弊社契約駐車場のご案内はございません。会場（大阪産業創造館）地下には機械式の有料駐車場がございますが、<strong>満車の場合もございますので、できる限り公共交通機関のご利用</strong>をお願いいたします。
-  </div>
-
-  <h3 class="reveal">asca社について</h3>
-  <p class="reveal">
-    1971年の創業以来、asca社はアーティフィシャルフラワー業界のパイオニアとして、高品質な製品を提供し続けています。毎年発行される秋冬カタログでは、造花だけでなく、装飾品や関連アイテムも充実しており、業界関係者から高い評価を得ています。
-  </p>
-
-  <!-- ===== 公式案内状 ===== -->
-  <h3 class="reveal">公式案内状</h3>
-  <p class="reveal">
-    asca（アスカ商会）より発行されている案内状（両面）です。表面に展示会のビジュアル、裏面に会場アクセスマップ等が記載されています。
-  </p>
-  <div class="reveal" style="margin:1em 0 1.5em; text-align:center;">
-    <a href="asca-fair-2026aw.pdf" target="_blank" rel="noopener" style="display:inline-block; padding:12px 28px; background-color:#444; color:#fff; font-size:15px; font-weight:bold; text-decoration:none; border-radius:6px; transition:background 0.25s;">
-      📄 案内状をPDFで開く・ダウンロード
-    </a>
-  </div>
-
-  <!-- ===== 最終CTA ===== -->
-  <div class="cta-block reveal">
-    <div class="reservation-note">
-      <strong>【ご予約時のお願い】</strong><br>
-      予約フォームの<strong>「お取引先名（ご帳合先名）」</strong>に、必ず<strong class="big">「神戸リボン」</strong>とご記入ください。
-    </div>
-    <div style="margin-top:0.6em;">
-      <a class="cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
-        asca FAIR 2026 AW（大阪）に申し込む
-      </a>
-    </div>
-  </div>
-
-  <p class="reveal" style="line-height:2.0; margin:2.5em 0 1.6em; font-size:16px; text-align:center;">
-    皆様のご来場を心よりお待ちしております。
-  </p>
+  <footer>
+    <p>asca · presented by Kobe Ribbon</p>
+  </footer>
 
 </div>
 
 <script>
-// ===== スクロール連動フェードイン =====
-(function() {
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('show'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('show');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
-})();
-
-// ===== 親ページ（Weebly）に高さ通知 =====
-(function() {
-  function postHeight() {
-    var h = document.documentElement.scrollHeight;
-    if (window.parent) {
-      window.parent.postMessage({ type: 'kobe-ribbon-iframe-height', height: h }, '*');
+  // gentle scroll reveal
+  (function() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('show'); });
+      return;
     }
-  }
-  window.addEventListener('load', postHeight);
-  window.addEventListener('resize', postHeight);
-  setTimeout(postHeight, 500);
-  setTimeout(postHeight, 1500);
-})();
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  })();
+
+  // post height to Weebly parent
+  (function() {
+    function postHeight() {
+      var h = document.documentElement.scrollHeight;
+      if (window.parent) {
+        window.parent.postMessage({ type: 'kobe-ribbon-iframe-height', height: h }, '*');
+      }
+    }
+    window.addEventListener('load', postHeight);
+    window.addEventListener('resize', postHeight);
+    setTimeout(postHeight, 500);
+    setTimeout(postHeight, 1500);
+    setTimeout(postHeight, 3500);
+  })();
 </script>
 </body>
 </html>

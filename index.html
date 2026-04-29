@@ -991,7 +991,7 @@
   <section class="cta-wrap reveal">
     <p class="cta-eyebrow">Reservation</p>
     <h2 class="cta-heading">ご予約はこちらから</h2>
-    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
+    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener" data-deadline-cta="2026-06-12T00:00:00+09:00" data-deadline-label="ご予約受付終了">
       ご予約フォームへ進む<span class="arrow">→</span>
     </a>
     <div class="cta-must">
@@ -1151,7 +1151,7 @@
   <section class="cta-wrap reveal">
     <p class="cta-eyebrow">Reservation</p>
     <h2 class="cta-heading">ご予約はこちらから</h2>
-    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener">
+    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenECvu8PgAcCOSQR6iOD50SKwz-JbGMb60QfhSB_oVa64EkQ/viewform" target="_blank" rel="noopener" data-deadline-cta="2026-06-12T00:00:00+09:00" data-deadline-label="ご予約受付終了">
       ご予約フォームへ進む<span class="arrow">→</span>
     </a>
     <div class="cta-must">
@@ -1208,6 +1208,27 @@
 </div>
 
 <script>
+  // 申込締切後にCTAボタンを自動でグレーアウト＋文言差し替え
+  (function() {
+    document.querySelectorAll('[data-deadline-cta]').forEach(function(btn) {
+      var deadline = new Date(btn.getAttribute('data-deadline-cta')).getTime();
+      if (isNaN(deadline) || Date.now() < deadline) return;
+      var label = btn.getAttribute('data-deadline-label') || 'ご予約受付終了';
+      btn.textContent = label;
+      btn.removeAttribute('href');
+      btn.removeAttribute('target');
+      btn.setAttribute('aria-disabled', 'true');
+      btn.style.backgroundColor = '#999';
+      btn.style.background = '#999';
+      btn.style.color = '#fff';
+      btn.style.cursor = 'not-allowed';
+      btn.style.pointerEvents = 'none';
+      btn.style.boxShadow = 'none';
+      btn.style.animation = 'none';
+      btn.style.borderColor = '#999';
+    });
+  })();
+
   (function() {
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('show'); });
